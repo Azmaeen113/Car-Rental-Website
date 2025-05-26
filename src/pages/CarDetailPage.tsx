@@ -48,8 +48,9 @@ const CarDetailPage = () => {
   };
 
   const handleSendMessage = () => {
-    const subject = `Inquiry about ${car.name}`;
-    const body = `Hello,
+    const recipient = "Booking@RichRentalsLA.com";
+    const subject = encodeURIComponent(`Inquiry about ${car.name}`);
+    const body = encodeURIComponent(`Hello,
 
 I am interested in the ${car.name} (${car.year}).
 
@@ -66,10 +67,10 @@ Please provide me with:
 
 I look forward to hearing from you.
 
-Best regards,`;
+Best regards,`);
 
-    const mailtoLink = `mailto:contact@richrentalsla.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink, '_self');
+    const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+    window.open(gmailURL, '_blank');
   };
 
   const relatedCars = carInventory

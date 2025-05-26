@@ -21,13 +21,14 @@ const CarCard: React.FC<CarCardProps> = ({ car, featured = false }) => {
   };
 
   const handleSendMessage = () => {
-    const subject = `Inquiry about ${car.name}`;
-    const body = `Hello, I am interested in the ${car.name} (${car.year}). Please provide more information about availability and pricing.
+    const recipient = "Booking@RichRentalsLA.com";
+    const subject = encodeURIComponent(`Inquiry about ${car.name}`);
+    const body = encodeURIComponent(`Hello, I am interested in the ${car.name} (${car.year}). Please provide more information about availability and pricing.
 
-Best regards,`;
+Best regards,`);
 
-    const mailtoLink = `mailto:info@richrentalsla.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink, '_self');
+    const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+    window.open(gmailURL, '_blank');
   };
 
   return (

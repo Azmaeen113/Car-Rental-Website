@@ -21,8 +21,32 @@ const ContactPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
+
+    // Validate required fields
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject || !formData.message.trim()) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    // Prepare Gmail compose URL
+    const recipient = "Booking@RichRentalsLA.com";
+    const subject = encodeURIComponent(`${formData.subject} - From ${formData.name}`);
+    const body = encodeURIComponent(
+      `Full Name: ${formData.name}
+Email Address: ${formData.email}
+Phone Number: ${formData.phone || "N/A"}
+Vehicle of Interest: ${formData.carInterest || "N/A"}
+
+Message:
+${formData.message}`
+    );
+
+    const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+
+    // Open Gmail in new tab
+    window.open(gmailURL, '_blank');
+
+    // Show success message
     setIsSubmitted(true);
 
     // Reset form after 3 seconds
@@ -148,9 +172,9 @@ const ContactPage = () => {
                 <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-green-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Gmail Opened!</h3>
                 <p className="text-gray-300">
-                  Thank you for contacting us. We'll get back to you within 2 hours.
+                  Your message has been prepared in Gmail. Please review and send it to complete your inquiry.
                 </p>
               </div>
             ) : (
