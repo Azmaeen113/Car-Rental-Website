@@ -10,6 +10,12 @@ interface CarCardProps {
 }
 
 const CarCard: React.FC<CarCardProps> = ({ car, featured = false }) => {
+  const getImageSrc = (imagePath: string) => {
+    // Remove leading slash if present and ensure proper path
+    const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+    return `/${cleanPath}`;
+  };
+
   const handleCallNow = () => {
     window.open('tel:+18184540977', '_self');
   };
@@ -19,7 +25,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, featured = false }) => {
     const body = `Hello, I am interested in the ${car.name} (${car.year}). Please provide more information about availability and pricing.
 
 Best regards,`;
-    
+
     const mailtoLink = `mailto:info@richrentalsla.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(mailtoLink, '_self');
   };
@@ -42,16 +48,20 @@ Best regards,`;
       {/* Image */}
       <div className="relative overflow-hidden">
         <img
-          src={car.image}
+          src={getImageSrc(car.image)}
           alt={car.name}
           className={`w-full object-cover transition-transform duration-700 group-hover:scale-110 ${
             featured ? 'h-64 lg:h-96' : 'h-48 lg:h-56'
           }`}
           loading="lazy"
           style={{ aspectRatio: featured ? '16/9' : '4/3' }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = '/placeholder.svg';
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        
+
         {/* Quick View Button */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Link
@@ -122,14 +132,14 @@ Best regards,`;
           >
             Details
           </Link>
-          <button 
+          <button
             onClick={handleCallNow}
             className="col-span-1 px-3 py-2 border border-yellow-400 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 flex items-center justify-center"
             title="Call Now"
           >
             <Phone className="w-4 h-4" />
           </button>
-          <button 
+          <button
             onClick={handleSendMessage}
             className="col-span-1 px-3 py-2 border border-yellow-400 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 flex items-center justify-center"
             title="Send Message"

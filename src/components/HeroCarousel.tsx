@@ -10,6 +10,12 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ featuredCars }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
+  const getImageSrc = (imagePath: string) => {
+    // Remove leading slash if present and ensure proper path
+    const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+    return `/${cleanPath}`;
+  };
+
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -43,7 +49,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ featuredCars }) => {
     const body = `Hello, I am interested in the ${currentCar.name} (${currentCar.year}). Please provide more information about availability and pricing.
 
 Best regards,`;
-    
+
     const mailtoLink = `mailto:info@richrentalsla.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(mailtoLink, '_self');
   };
@@ -60,10 +66,14 @@ Best regards,`;
             }`}
           >
             <img
-              src={car.image}
+              src={getImageSrc(car.image)}
               alt={car.name}
               className="w-full h-full object-cover"
               loading={index === 0 ? 'eager' : 'lazy'}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = '/placeholder.svg';
+              }}
             />
             <div className="absolute inset-0 bg-black/50" />
           </div>
@@ -107,21 +117,21 @@ Best regards,`;
                   </div>
                 </div>
                 <p className="text-gray-300 leading-relaxed">
-                  Experience the ultimate in luxury and performance. 
-                  This exceptional vehicle combines cutting-edge technology 
+                  Experience the ultimate in luxury and performance.
+                  This exceptional vehicle combines cutting-edge technology
                   with unparalleled craftsmanship. Contact us for exclusive pricing.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
+                <button
                   onClick={handleCallNow}
                   className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-8 py-3 rounded-lg font-semibold hover:from-yellow-500 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105"
                 >
                   <Phone className="w-5 h-5" />
                   <span>Call Now</span>
                 </button>
-                <button 
+                <button
                   onClick={handleSendMessage}
                   className="inline-flex items-center justify-center space-x-2 border border-yellow-400 text-yellow-400 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 >

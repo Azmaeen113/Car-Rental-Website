@@ -7,12 +7,36 @@ import { ArrowLeft, Shield, Star, Phone, Mail, CheckCircle, Clock, MapPin } from
 const CarDetailPage = () => {
   const { carId } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
+  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
 
   const car = carInventory.find(c => c.id === parseInt(carId || '0'));
 
   if (!car) {
     return <Navigate to="/inventory" replace />;
   }
+
+  const handleImageError = (index: number) => {
+    setImageErrors(prev => new Set(prev).add(index));
+  };
+
+  const getImageSrc = (imagePath: string) => {
+    // Remove leading slash if present and ensure proper path
+    const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+    return `/${cleanPath}`;
+  };
+
+  const getValidGalleryImages = () => {
+    return car.gallery.filter((_, index) => !imageErrors.has(index));
+  };
+
+  const getCurrentImageSrc = () => {
+    const validImages = getValidGalleryImages();
+    if (validImages.length === 0) {
+      return getImageSrc(car.image);
+    }
+    const currentImage = validImages[selectedImage] || validImages[0];
+    return getImageSrc(currentImage);
+  };
 
   const handleCallNow = () => {
     window.open('tel:+18184540977', '_self');
@@ -22,7 +46,7 @@ const CarDetailPage = () => {
     const subject = `Inquiry about ${car.name}`;
     const body = `Hello,
 
-I am interested in the ${car.name} (${car.year}). 
+I am interested in the ${car.name} (${car.year}).
 
 Vehicle Details:
 - Model: ${car.name}
@@ -38,7 +62,7 @@ Please provide me with:
 I look forward to hearing from you.
 
 Best regards,`;
-    
+
     const mailtoLink = `mailto:contact@richrentalsla.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(mailtoLink, '_self');
   };
@@ -69,10 +93,13 @@ Best regards,`;
             {/* Main Image */}
             <div className="relative overflow-hidden rounded-2xl bg-gray-900">
               <img
-                src={car.gallery[selectedImage] || car.image}
+                src={getCurrentImageSrc()}
                 alt={car.name}
                 className="w-full h-96 lg:h-[500px] object-cover"
                 loading="eager"
+                onError={() => {
+                  console.warn(`Failed to load image: ${getCurrentImageSrc()}`);
+                }}
               />
               {/* Availability Badge */}
               <div className="absolute top-4 left-4">
@@ -89,20 +116,23 @@ Best regards,`;
             {/* Thumbnail Gallery */}
             <div className="grid grid-cols-4 gap-2">
               {car.gallery.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedImage(index)}
-                  className={`relative overflow-hidden rounded-lg ${
-                    selectedImage === index ? 'ring-2 ring-yellow-400' : ''
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`${car.name} view ${index + 1}`}
-                    className="w-full h-20 object-cover hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </button>
+                !imageErrors.has(index) && (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImage(index)}
+                    className={`relative overflow-hidden rounded-lg ${
+                      selectedImage === index ? 'ring-2 ring-yellow-400' : ''
+                    }`}
+                  >
+                    <img
+                      src={getImageSrc(image)}
+                      alt={`${car.name} view ${index + 1}`}
+                      className="w-full h-20 object-cover hover:scale-110 transition-transform duration-300"
+                      loading="lazy"
+                      onError={() => handleImageError(index)}
+                    />
+                  </button>
+                )
               ))}
             </div>
           </div>
@@ -186,7 +216,7 @@ Best regards,`;
             <div>
               <h2 className="text-3xl font-bold text-black mb-4">Ready to Experience This Vehicle?</h2>
               <p className="text-black/80 text-lg mb-6">
-                Contact our luxury rental specialists today. We'll provide personalized pricing, 
+                Contact our luxury rental specialists today. We'll provide personalized pricing,
                 check availability for your dates, and ensure your {car.name} experience exceeds expectations.
               </p>
               <div className="space-y-3">
@@ -260,10 +290,14 @@ Best regards,`;
                 >
                   <div className="relative overflow-hidden">
                     <img
-                      src={relatedCar.image}
+                      src={getImageSrc(relatedCar.image)}
                       alt={relatedCar.name}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                       loading="lazy"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/placeholder.svg';
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
