@@ -24,7 +24,7 @@ const ContactPage = () => {
     // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
     setIsSubmitted(true);
-    
+
     // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
@@ -51,7 +51,7 @@ const ContactPage = () => {
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to experience luxury? Get in touch with our team and let us help you 
+            Ready to experience luxury? Get in touch with our team and let us help you
             find the perfect vehicle for your next adventure.
           </p>
         </div>
@@ -69,7 +69,7 @@ const ContactPage = () => {
                 </span>
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed">
-                We're here to help you experience the thrill of luxury driving. 
+                We're here to help you experience the thrill of luxury driving.
                 Contact us today to learn more about our exclusive fleet and personalized service.
               </p>
             </div>
@@ -82,8 +82,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="text-white font-semibold mb-1">Visit Our Location</h3>
-                  <p className="text-gray-300">1459 Ventura Blvd</p>
-                  <p className="text-gray-300">Studio City, CA 91604</p>
+                  <p className="text-gray-300">8549 Wilshire Blvd</p>
+                  <p className="text-gray-300">Beverly Hills CA 90211</p>
                 </div>
               </div>
 
@@ -133,7 +133,7 @@ const ContactPage = () => {
                 <div className="text-center">
                   <MapPin className="w-12 h-12 text-yellow-400 mx-auto mb-2" />
                   <p className="text-gray-300">Interactive Map</p>
-                  <p className="text-gray-400 text-sm">Studio City, CA</p>
+                  <p className="text-gray-400 text-sm">8549 Wilshire Blvd, Beverly Hills CA 90211</p>
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@ const ContactPage = () => {
           {/* Contact Form */}
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-yellow-400/20">
             <h2 className="text-2xl font-bold text-white mb-6">Send Us a Message</h2>
-            
+
             {isSubmitted ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -292,7 +292,7 @@ const ContactPage = () => {
             Ready to Experience Luxury?
           </h2>
           <p className="text-xl text-black/80 mb-8">
-            Don't wait any longer. Contact us now and let us help you create 
+            Don't wait any longer. Contact us now and let us help you create
             an unforgettable driving experience.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

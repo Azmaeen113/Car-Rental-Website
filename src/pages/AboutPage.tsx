@@ -113,7 +113,8 @@ const AboutPage = () => {
                 <div className="bg-black/40 rounded-lg p-4 border border-yellow-400/20">
                   <MapPin className="w-8 h-8 text-yellow-400 mb-3" />
                   <h3 className="text-white font-semibold mb-2">Prime Location</h3>
-                  <p className="text-gray-400 text-sm">Conveniently located in Studio City, CA</p>
+                  <p className="text-gray-400 text-sm">8549 Wilshire Blvd, Beverly Hills CA 90211</p>
+                  <p className="text-gray-400 text-xs mt-2">Conveniently located in Beverly Hills, with vehicle drop-off available for your convenience.</p>
                 </div>
               </div>
             </div>

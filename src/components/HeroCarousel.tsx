@@ -18,6 +18,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ featuredCars }) => {
     "Rolls-Royce Spectre": "hero section cars/Rolls-royce spectre.png",
     "Ferrari SF90 Stradale": "hero section cars/Ferrari sf90 stardale.png",
     "Lamborghini Urus Performante": "hero section cars/Lamborghini Urus Perf.png",
+    "Lamborghini Urus": "hero section cars/Lamborghini Urus.png",
     "Rolls-Royce Cullinan Series 2": "hero section cars/rolls-royce cullinan series 2.png"
   };
 

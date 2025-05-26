@@ -250,7 +250,7 @@ Best regards,`;
                   <strong>Email:</strong> contact@richrentalsla.com
                 </div>
                 <div className="text-black">
-                  <strong>Location:</strong> Studio City, CA
+                  <strong>Location:</strong> 8549 Wilshire Blvd, Beverly Hills CA 90211
                 </div>
                 <div className="text-black">
                   <strong>Hours:</strong> 10AM-7PM, 7 Days/Week

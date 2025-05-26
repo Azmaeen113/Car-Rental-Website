@@ -7,13 +7,14 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   // Show specific cars in featured collection
-  const featuredCars = carInventory.filter(car => 
+  const featuredCars = carInventory.filter(car =>
     car.name === "McLaren 750S" ||
     car.name === "Porsche GT3 RS" ||
     car.name === "Ferrari Purosangue" ||
     car.name === "Rolls-Royce Spectre" ||
     car.name === "Ferrari SF90 Stradale" ||
     car.name === "Lamborghini Urus Performante" ||
+    car.name === "Lamborghini Urus" ||
     car.name === "Rolls-Royce Cullinan Series 2"
   );
 
@@ -25,12 +26,13 @@ const HomePage = () => {
     "Rolls-Royce Spectre",
     "Ferrari SF90 Stradale",
     "Lamborghini Urus Performante",
+    "Lamborghini Urus",
     "Rolls-Royce Cullinan Series 2"
   ];
 
   const foundCars = featuredCars.map(car => car.name);
   const missingCars = requestedCars.filter(car => !foundCars.includes(car));
-  
+
   if (missingCars.length > 0) {
     console.log('Missing cars:', missingCars);
   }
@@ -135,7 +137,7 @@ const HomePage = () => {
             Ready to Experience Luxury?
           </h2>
           <p className="text-xl text-black/80 mb-8 max-w-2xl mx-auto">
-            Don't just drive, make a statement. Contact us today for pricing and availability 
+            Don't just drive, make a statement. Contact us today for pricing and availability
             to experience the thrill that only comes with true automotive excellence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -20,7 +20,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Premier luxury car rental company located in the heart of Los Angeles. 
+              Premier luxury car rental company located in the heart of Los Angeles.
               Experience the amazing joy, comfort, and thrill that these machines bring.
             </p>
           </div>
@@ -36,7 +36,7 @@ const Footer = () => {
                 { name: 'Contact', href: '/contact' },
               ].map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-gray-400 hover:text-yellow-400 transition-colors text-sm"
                   >
@@ -53,7 +53,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3 text-sm">
                 <MapPin className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                <span className="text-gray-400">Studio City, CA 91604</span>
+                <span className="text-gray-400">8549 Wilshire Blvd, Beverly Hills CA 90211</span>
               </li>
               <li className="flex items-center space-x-3 text-sm">
                 <Phone className="w-4 h-4 text-yellow-400 flex-shrink-0" />
@@ -78,17 +78,17 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-3">
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
+              <a
+                href="https://instagram.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center text-black hover:scale-110 transition-transform duration-300"
               >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
+              <a
+                href="https://facebook.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center text-black hover:scale-110 transition-transform duration-300"
               >
@@ -104,7 +104,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-yellow-500/20 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2025 Rich Rentals LA. All rights reserved. | 
+            © 2025 Rich Rentals LA. All rights reserved. |
             <span className="text-yellow-400 ml-1">Luxury Redefined. Dreams Delivered.</span>
           </p>
         </div>
