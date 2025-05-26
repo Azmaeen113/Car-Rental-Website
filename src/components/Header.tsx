@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Instagram, Facebook } from 'lucide-react';
+import { Menu, X, Instagram } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,10 +65,6 @@ const Header = () => {
                  className="text-white hover:text-yellow-400 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                 className="text-white hover:text-yellow-400 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -106,10 +102,6 @@ const Header = () => {
               <a href="https://www.instagram.com/richrentalsla?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer"
                  className="text-white hover:text-yellow-400 transition-colors">
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                 className="text-white hover:text-yellow-400 transition-colors">
-                <Facebook className="w-5 h-5" />
               </a>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
+import { Instagram, Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -79,20 +79,12 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-3">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/richrentalsla?igsh=NTc4MTIwNjQ2YQ=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center text-black hover:scale-110 transition-transform duration-300"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center text-black hover:scale-110 transition-transform duration-300"
-              >
-                <Facebook className="w-5 h-5" />
               </a>
             </div>
             <p className="text-xs text-gray-500 mt-4">
