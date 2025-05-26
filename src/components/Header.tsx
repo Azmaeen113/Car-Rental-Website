@@ -22,13 +22,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                <svg viewBox="0 0 24 24" className="w-6 h-6 text-black" fill="currentColor">
-                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-                </svg>
-              </div>
+              <img
+                src="/mainlogo.jpg"
+                alt="Rich Rentals LA Logo"
+                className="w-12 h-12 lg:w-14 lg:h-14 rounded-lg object-cover transform group-hover:scale-110 transition-transform duration-300 border-2 border-yellow-400/30 group-hover:border-yellow-400/60"
+              />
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
@@ -61,7 +61,7 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             {/* Social Icons */}
             <div className="hidden sm:flex items-center space-x-3">
-              <a href="https://www.instagram.com/richrentalsla?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" 
+              <a href="https://www.instagram.com/richrentalsla?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer"
                  className="text-white hover:text-yellow-400 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
@@ -100,10 +100,10 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            
+
             {/* Mobile Social Links */}
             <div className="flex items-center space-x-4 px-3 py-2">
-              <a href="https://www.instagram.com/richrentalsla?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" 
+              <a href="https://www.instagram.com/richrentalsla?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer"
                  className="text-white hover:text-yellow-400 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
