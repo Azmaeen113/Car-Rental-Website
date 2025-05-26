@@ -105,19 +105,21 @@ Best regards,`;
                 <h2 className="text-sm font-medium text-yellow-400 uppercase tracking-wider">
                   Featured Vehicle
                 </h2>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
                   <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                     Luxury
                   </span>
                   <br />
                   Redefined
                 </h1>
-                <p className="text-xl text-gray-300">Dreams Delivered</p>
+                <p className="text-lg sm:text-xl text-gray-300">Dreams Delivered</p>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold">{currentCar.name}</h3>
-                <div className="flex flex-wrap gap-4 text-sm">
+                <h3 className="text-xl sm:text-2xl font-bold">{currentCar.name}</h3>
+
+                {/* Desktop specs - hidden on mobile */}
+                <div className="hidden sm:flex flex-wrap gap-4 text-sm">
                   <div className="flex items-center space-x-2">
                     <span className="text-yellow-400">HP:</span>
                     <span>{currentCar.specs.horsepower}</span>
@@ -131,14 +133,28 @@ Best regards,`;
                     <span>{currentCar.specs.topSpeed}</span>
                   </div>
                 </div>
-                <p className="text-gray-300 leading-relaxed">
+
+                {/* Desktop description - hidden on mobile */}
+                <p className="hidden sm:block text-gray-300 leading-relaxed">
                   Experience the ultimate in luxury and performance.
                   This exceptional vehicle combines cutting-edge technology
                   with unparalleled craftsmanship. Contact us for exclusive pricing.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* Mobile: Single CTA button */}
+              <div className="sm:hidden">
+                <button
+                  onClick={handleCallNow}
+                  className="w-full inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-6 py-3 rounded-lg font-semibold hover:from-yellow-500 hover:to-yellow-700 transition-all duration-300"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>Call Now</span>
+                </button>
+              </div>
+
+              {/* Desktop: Multiple CTA buttons */}
+              <div className="hidden sm:flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleCallNow}
                   className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-8 py-3 rounded-lg font-semibold hover:from-yellow-500 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105"
@@ -156,8 +172,8 @@ Best regards,`;
               </div>
             </div>
 
-            {/* Contact Card */}
-            <div className="relative">
+            {/* Contact Card - Hidden on mobile */}
+            <div className="relative hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 rounded-3xl blur-3xl" />
               <div className="relative bg-black/20 backdrop-blur-sm rounded-3xl p-6 border border-yellow-400/20">
                 <div className="text-center space-y-4">
@@ -223,13 +239,13 @@ Best regards,`;
 
       <button
         onClick={goToPrevious}
-        className="hidden lg:block absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-yellow-400 hover:text-black transition-all duration-300"
+        className="hidden lg:flex absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full items-center justify-center text-white hover:bg-yellow-400 hover:text-black transition-all duration-300"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={goToNext}
-        className="hidden lg:block absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-yellow-400 hover:text-black transition-all duration-300"
+        className="hidden lg:flex absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full items-center justify-center text-white hover:bg-yellow-400 hover:text-black transition-all duration-300"
       >
         <ChevronRight className="w-6 h-6" />
       </button>

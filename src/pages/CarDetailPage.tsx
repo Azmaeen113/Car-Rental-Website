@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { carInventory } from '../data/carInventory';
 import { ArrowLeft, Shield, Star, Phone, Mail, CheckCircle, Clock, MapPin } from 'lucide-react';
@@ -8,6 +8,11 @@ const CarDetailPage = () => {
   const { carId } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
   const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
+
+  // Scroll to top when component mounts or carId changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [carId]);
 
   const car = carInventory.find(c => c.id === parseInt(carId || '0'));
 
