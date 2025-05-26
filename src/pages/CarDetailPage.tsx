@@ -248,7 +248,7 @@ Best regards,`);
                   <strong>Phone:</strong> (818) 454-0977
                 </div>
                 <div className="text-black">
-                  <strong>Email:</strong> contact@richrentalsla.com
+                  <strong>Email:</strong> Booking@RichRentalsLA.com
                 </div>
                 <div className="text-black">
                   <strong>Location:</strong> 8549 Wilshire Blvd, Beverly Hills CA 90211

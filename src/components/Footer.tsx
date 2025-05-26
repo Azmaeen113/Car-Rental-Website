@@ -63,8 +63,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3 text-sm">
                 <Mail className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                <a href="mailto:info@richrentalsla.com" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  info@richrentalsla.com
+                <a href="mailto:Booking@RichRentalsLA.com" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  Booking@RichRentalsLA.com
                 </a>
               </li>
             </ul>

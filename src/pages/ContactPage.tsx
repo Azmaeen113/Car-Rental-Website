@@ -130,8 +130,8 @@ ${formData.message}`
                 </div>
                 <div>
                   <h3 className="text-white font-semibold mb-1">Email Us</h3>
-                  <a href="mailto:info@richrentalsla.com" className="text-yellow-400 hover:text-yellow-300 transition-colors">
-                    info@richrentalsla.com
+                  <a href="mailto:Booking@RichRentalsLA.com" className="text-yellow-400 hover:text-yellow-300 transition-colors">
+                    Booking@RichRentalsLA.com
                   </a>
                   <p className="text-gray-300 text-sm">We respond within 2 hours</p>
                 </div>
@@ -328,7 +328,7 @@ ${formData.message}`
               <span>Call (818) 454-0977</span>
             </a>
             <a
-              href="mailto:info@richrentalsla.com"
+              href="mailto:Booking@RichRentalsLA.com"
               className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-yellow-400 transition-colors inline-flex items-center justify-center space-x-2"
             >
               <Mail className="w-5 h-5" />

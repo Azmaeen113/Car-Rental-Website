@@ -87,4 +87,4 @@ src/
 
 For questions or support, contact Rich Rentals LA:
 - Phone: (818) 454-0977
-- Email: info@richrentalsla.com
+- Email: Booking@RichRentalsLA.com
