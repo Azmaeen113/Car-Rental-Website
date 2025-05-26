@@ -75,7 +75,6 @@ Best regards,`;
                 target.src = '/placeholder.svg';
               }}
             />
-            <div className="absolute inset-0 bg-black/50" />
           </div>
         ))}
       </div>
