@@ -10,9 +10,25 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ featuredCars }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const getImageSrc = (imagePath: string) => {
-    // Remove leading slash if present and ensure proper path
-    const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+  // Mapping for hero section specific images
+  const heroImageMapping: { [key: string]: string } = {
+    "McLaren 750S": "hero section cars/Mclaren 750S.png",
+    "Porsche GT3 RS": "hero section cars/Porsche GT3-RS.png",
+    "Ferrari Purosangue": "hero section cars/Ferrari Purosangue.png",
+    "Rolls-Royce Spectre": "hero section cars/Rolls-royce spectre.png",
+    "Ferrari SF90 Stradale": "hero section cars/Ferrari sf90 stardale.png",
+    "Lamborghini Urus Performante": "hero section cars/Lamborghini Urus Perf.png",
+    "Rolls-Royce Cullinan Series 2": "hero section cars/rolls-royce cullinan series 2.png"
+  };
+
+  const getHeroImageSrc = (carName: string, fallbackImage: string) => {
+    // Use hero section image if available, otherwise fallback to regular image
+    const heroImage = heroImageMapping[carName];
+    if (heroImage) {
+      return `/${heroImage}`;
+    }
+    // Fallback to regular image path
+    const cleanPath = fallbackImage.startsWith('/') ? fallbackImage.slice(1) : fallbackImage;
     return `/${cleanPath}`;
   };
 
@@ -66,7 +82,7 @@ Best regards,`;
             }`}
           >
             <img
-              src={getImageSrc(car.image)}
+              src={getHeroImageSrc(car.name, car.image)}
               alt={car.name}
               className="w-full h-full object-cover"
               loading={index === 0 ? 'eager' : 'lazy'}
