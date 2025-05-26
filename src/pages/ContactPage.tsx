@@ -8,7 +8,8 @@ const ContactPage = () => {
     phone: '',
     subject: '',
     carInterest: '',
-    message: ''
+    message: '',
+    emailMethod: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -23,15 +24,15 @@ const ContactPage = () => {
     e.preventDefault();
 
     // Validate required fields
-    if (!formData.name.trim() || !formData.email.trim() || !formData.subject || !formData.message.trim()) {
-      alert('Please fill in all required fields.');
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject || !formData.message.trim() || !formData.emailMethod) {
+      alert('Please fill in all required fields including email provider selection.');
       return;
     }
 
-    // Prepare Gmail compose URL
+    // Prepare email data
     const recipient = "Booking@RichRentalsLA.com";
-    const subject = encodeURIComponent(`${formData.subject} - From ${formData.name}`);
-    const body = encodeURIComponent(
+    const fullSubject = encodeURIComponent(`${formData.subject} - From ${formData.name}`);
+    const fullBody = encodeURIComponent(
       `Full Name: ${formData.name}
 Email Address: ${formData.email}
 Phone Number: ${formData.phone || "N/A"}
@@ -41,10 +42,37 @@ Message:
 ${formData.message}`
     );
 
-    const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+    // Generate URL based on selected email provider
+    let url = "";
 
-    // Open Gmail in new tab
-    window.open(gmailURL, '_blank');
+    switch (formData.emailMethod) {
+      case "Gmail":
+        url = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${fullSubject}&body=${fullBody}`;
+        break;
+      case "Outlook":
+        url = `https://outlook.live.com/owa/?path=/mail/action/compose&to=${recipient}&subject=${fullSubject}&body=${fullBody}`;
+        break;
+      case "Yahoo":
+        url = `https://compose.mail.yahoo.com/?to=${recipient}&subject=${fullSubject}&body=${fullBody}`;
+        break;
+      case "iCloud":
+        // iCloud webmail doesn't support prefilled email links, fallback to mailto
+        url = `mailto:${recipient}?subject=${fullSubject}&body=${fullBody}`;
+        break;
+      case "AOL":
+        // AOL also doesn't support direct compose with body; fallback
+        url = `mailto:${recipient}?subject=${fullSubject}&body=${fullBody}`;
+        break;
+      case "Default":
+        url = `mailto:${recipient}?subject=${fullSubject}&body=${fullBody}`;
+        break;
+      default:
+        alert("Please select a valid email provider.");
+        return;
+    }
+
+    // Open email client
+    window.open(url, '_blank');
 
     // Show success message
     setIsSubmitted(true);
@@ -58,7 +86,8 @@ ${formData.message}`
         phone: '',
         subject: '',
         carInterest: '',
-        message: ''
+        message: '',
+        emailMethod: ''
       });
     }, 3000);
   };
@@ -172,9 +201,9 @@ ${formData.message}`
                 <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-green-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Gmail Opened!</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Email Client Opened!</h3>
                 <p className="text-gray-300">
-                  Your message has been prepared in Gmail. Please review and send it to complete your inquiry.
+                  Your message has been prepared in your selected email provider. Please review and send it to complete your inquiry.
                 </p>
               </div>
             ) : (
@@ -271,6 +300,29 @@ ${formData.message}`
                     <option value="bentley-continental">Bentley Continental GT</option>
                     <option value="aston-martin-db11">Aston Martin DB11</option>
                     <option value="other">Other/Multiple</option>
+                  </select>
+                </div>
+
+                {/* Email Provider Selection */}
+                <div>
+                  <label htmlFor="emailMethod" className="block text-white font-medium mb-2">
+                    Send Email Using *
+                  </label>
+                  <select
+                    id="emailMethod"
+                    name="emailMethod"
+                    required
+                    value={formData.emailMethod}
+                    onChange={handleInputChange}
+                    className="w-full bg-black border border-yellow-400/20 rounded-lg px-4 py-3 text-white focus:border-yellow-400 focus:outline-none transition-colors"
+                  >
+                    <option value="">Select an email provider</option>
+                    <option value="Gmail">Gmail</option>
+                    <option value="Outlook">Outlook / Hotmail / MSN</option>
+                    <option value="Yahoo">Yahoo Mail</option>
+                    <option value="iCloud">Apple iCloud Mail</option>
+                    <option value="AOL">AOL Mail</option>
+                    <option value="Default">Default Email App</option>
                   </select>
                 </div>
 
