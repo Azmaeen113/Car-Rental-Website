@@ -10,16 +10,15 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ featuredCars }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  // Mapping for hero section specific images
+  // Mapping for hero section specific WebP images
   const heroImageMapping: { [key: string]: string } = {
-    "McLaren 750S": "hero section cars/Mclaren 750S.png",
-    "Porsche GT3 RS": "hero section cars/Porsche GT3-RS.png",
-    "Ferrari Purosangue": "hero section cars/Ferrari Purosangue.png",
-    "Rolls-Royce Spectre": "hero section cars/Rolls-royce spectre.png",
-    "Ferrari SF90 Stradale": "hero section cars/Ferrari sf90 stardale.png",
-    "Lamborghini Urus Performante": "hero section cars/Lamborghini Urus Perf.png",
-    "Lamborghini Urus": "hero section cars/Lamborghini Urus.png",
-    "Rolls-Royce Cullinan Series 2": "hero section cars/rolls-royce cullinan series 2.png"
+    "McLaren 750S": "compressed webp car images/Mclaren 750S.webp",
+    "Porsche GT3 RS": "compressed webp car images/Porscge GT3 RS.webp",
+    "Ferrari Purosangue": "compressed webp car images/Ferrari Purosangue.webp",
+    "Rolls-Royce Spectre": "compressed webp car images/Rolls Royce Spectre.webp",
+    "Lamborghini Urus Performante": "compressed webp car images/Lamborchini URUS PERF.webp",
+    "Lamborghini Urus": "compressed webp car images/Lamborghini urus.webp",
+    "Rolls-Royce Cullinan Series 2": "compressed webp car images/ROLLS ROYCE CULLINAN SERIES 2.webp"
   };
 
   const getHeroImageSrc = (carName: string, fallbackImage: string) => {
