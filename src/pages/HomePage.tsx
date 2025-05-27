@@ -12,7 +12,6 @@ const HomePage = () => {
     car.name === "Porsche GT3 RS" ||
     car.name === "Ferrari Purosangue" ||
     car.name === "Rolls-Royce Spectre" ||
-    car.name === "Ferrari SF90 Stradale" ||
     car.name === "Lamborghini Urus Performante" ||
     car.name === "Lamborghini Urus" ||
     car.name === "Rolls-Royce Cullinan Series 2"
@@ -24,7 +23,6 @@ const HomePage = () => {
     "Porsche GT3 RS",
     "Ferrari Purosangue",
     "Rolls-Royce Spectre",
-    "Ferrari SF90 Stradale",
     "Lamborghini Urus Performante",
     "Lamborghini Urus",
     "Rolls-Royce Cullinan Series 2"
